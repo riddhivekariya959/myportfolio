@@ -13,7 +13,7 @@
     --text: #f1f2f4;
     --muted: #9aa0ab;
     --accent: #df6c43;            /* your original orange, now the only accent */
-    --accent-hover: #f0805a;
+  
     --radius: 16px;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     --font-heading: "Sora", sans-serif;
@@ -35,8 +35,8 @@ body {
 h1, h2, h3, h4, .h4 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
 h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); }
 img, video { max-width: 100%; }
-a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--accent-hover); }
+a { color: var(--accent); text-decoration: none; }
+
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .mono { font-family: var(--font-mono); }
@@ -44,8 +44,7 @@ a:hover { color: var(--accent-hover); }
 
 /* 3. NAVBAR */
 .custom-nav {
-    background: rgba(13, 14, 17, 0.85);
-    backdrop-filter: blur(10px);
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
 }
 .navbar-brand { font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); }
@@ -64,13 +63,12 @@ a:hover { color: var(--accent-hover); }
     border-radius: 10px;
     padding: 0.6rem 1.3rem;
     font-weight: 600;
-    transition: transform 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
-.btn:hover { transform: translateY(-2px); }
 .btn-accent { background: var(--accent); border: 1px solid var(--accent); color: #fff; }
-.btn-accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+
 .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
 
 /* 5. HERO */
 .hero {
@@ -111,9 +109,7 @@ a:hover { color: var(--accent-hover); }
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 0.6rem 1.2rem;
-    transition: border-color 0.2s, transform 0.2s;
 }
-.skill-chip:hover { border-color: var(--accent); transform: translateY(-2px); }
 
 /* 7. CARDS (work + lab work) */
 .card {
@@ -122,13 +118,9 @@ a:hover { color: var(--accent-hover); }
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    transition: border-color 0.2s;
 }
-.card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(223, 108, 67, 0.55);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
-}
+.card:hover { border-color: rgba(223, 108, 67, 0.5); }
 .card-body { display: flex; flex-direction: column; padding: 1.25rem; }
 .card-body .btn, .card-body .card-link { margin-top: auto; }    /* pins the button to the card bottom */
 .card-link { font-weight: 600; padding-top: 0.75rem; }
@@ -146,14 +138,8 @@ a:hover { color: var(--accent-hover); }
 .contact-item a { overflow-wrap: anywhere; }   /* long LinkedIn URL can't overflow */
 .site-footer { border-top: 1px solid var(--border); background: #08090b; color: var(--muted); }
 
-/* 9. SMALL SCREENS */
+/* 9. SMALL SCREENS – the Bootstrap grid already handles the layout, this only trims spacing */
 @media (max-width: 767.98px) {
     .hero { padding: 2.5rem 0; }
     .section { padding: 3rem 0; }
-    .hero .btn { width: 100%; margin-bottom: 0.5rem; }
-}
-
-/* Respect users who turn off animations */
-@media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; scroll-behavior: auto !important; }
 }
